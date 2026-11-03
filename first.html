@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Delius&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Edu+QLD+Hand:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Delius&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Edu+QLD+Hand:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Rubik+Storm&family=Shadows+Into+Light&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    button{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: none;
+        font-size: 20px;
+        text-align: center;
+    }
+    .stone{
+        position: relative;
+        left: 500px;
+        position: relative;
+      
+    }
+    .paper{
+        position: relative;
+        left: 530px;
+        top: 100px;
+    }
+    .scisser{
+        position: relative;
+        top: 200px;
+        left: 190px;
+    }
+    h1{
+      text-align: center;
+      font-family: "Caacupe One", sans-serif;
+      font-size: 50px;
+      color: red;
+
+}
+    button:hover{
+        background-color: orange;
+    }
+    .choice{
+        position: relative;
+        top: 250px;
+        left: 600px;
+        color: aliceblue;   
+        font-family: "Smooch Sans", sans-serif;
+
+
+}
+    .result{
+        color: brown;
+        position: relative;
+        top: 250px;
+        left: 650px;
+        font-family: "Caacupe One", sans-serif;
+    }
+    .computersc{
+        position: relative;
+        left: 1300px;
+        color: aliceblue;
+    }
+    .play{
+        color: aliceblue;
+    }
+    body{
+        background-color: #17172b;
+    }
+
+</style>
+<body>
+    <h1>stone paper scisser</h1>
+    <button class="stone" onclick="game('stone')">✊stone</button>
+    <button class="paper" onclick="game('paper')">✋papper</button>
+    <button class="scisser" onclick="game('scisser')">✌️scisser</button>
+  
+   
+    <h2 id="choice" class="choice">your choice:</h2>
+    <h2 id="computer choice" class="computer choice">computer choice:</h2>
+    <h2 id="result" class="result">result</h2>
+
+     <h2 id="play score" class="play">playerscore:0</h2>
+     <h2 id="computer score" class="computersc">computerscore:0</h2>
+    <script>
+        let scorep=0
+        let scorec=0
+        function game(yourchoice){
+            let options=['stone','paper','scisser']
+
+            let random= Math.floor(Math.random()*3)
+
+            let computer=options[random]
+
+            document.getElementById("choice").innerHTML="your choice :"+yourchoice
+            document.getElementById("computer choice").innerHTML="computer choice :"+computer
+
+            if(yourchoice===computer){
+                document.getElementById("result").innerHTML="Draw🤭"
+            }
+            else if(
+                (yourchoice==="stone"&& computer==="scisser")||
+                (yourchoice==="paper"&& computer==="stone")||
+                (yourchoice==="scisser"&& computer==="paper")
+            ){
+                document.getElementById("result").innerHTML="you win😊"
+                scorep++
+            }
+            else{
+                document.getElementById("result").innerHTML="computer win😎"
+                scorec++
+            }
+            document.getElementById("play score").innerHTML="play score:"+scorep
+            document.getElementById("computer score").innerHTML="computer choice:"+scorec
+        }
+    </script>
+</body>
+</html>
